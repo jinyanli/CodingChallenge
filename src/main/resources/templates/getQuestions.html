@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+
+<form method="post" action="showScore">
+    <div th:each="question : ${questions}">
+        <label th:text="${question.getQuote()}" ></label><br>
+            <div th:each="character : ${question.getCharacters()}">
+                <input type="radio" th:id="${character.getName()}" th:name="${question.getQuoteId()}" th:value="${character.getId()}">
+                <label th:for="${character.getName()}" th:text="${character.getName()}" ></label><br>
+            </div>
+        <br>
+    </div>
+   <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+spring:
+  jackson:
+    serialization:
+      indent-output: true
+
+api-base-url: https://the-one-api.dev/v2

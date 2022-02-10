@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<form>
+    <label for="chapterName">Search Chapter Name:</label><br>
+    <input type="text" id="chapterName" name="chapterName"><br>
+    <input type="submit" value="Submit">
+
+    <p th:text="'Chapter Name Result : ' + ${chapterName}" />
+</form>
+</body>
+</html>
