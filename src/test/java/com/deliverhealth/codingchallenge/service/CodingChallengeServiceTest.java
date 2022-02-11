@@ -18,9 +18,7 @@ import java.net.URI;
 
 import static org.mockito.ArgumentMatchers.any;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.lenient;
-import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
