@@ -20,8 +20,11 @@ import java.util.stream.Collectors;
 @Controller
 public class CodingChallengeController {
 
-    @Autowired
     private CodingChallengeService codingChallengeService;
+
+    public CodingChallengeController(CodingChallengeService codingChallengeService) {
+        this.codingChallengeService = codingChallengeService;
+    }
 
     @GetMapping("/index")
     public String index() {

@@ -15,9 +15,12 @@ import java.util.*;
 @RequestMapping(path = "/api")
 public class CodingChallengeAPI {
 
-    @Autowired
+
     private CodingChallengeService codingChallengeService;
 
+    public CodingChallengeAPI(CodingChallengeService codingChallengeService) {
+        this.codingChallengeService = codingChallengeService;
+    }
 
     @GetMapping(path = "/getChapterNamesFromAllOfTheBooks")
     public ResponseEntity<List<String>> getChapterNamesFromAllOfTheBooks() throws JsonProcessingException {

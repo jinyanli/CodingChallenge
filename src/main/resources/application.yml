@@ -4,3 +4,5 @@ spring:
       indent-output: true
 
 api-base-url: https://the-one-api.dev/v2
+
+token: ol9aTpTDLoMSuwmrsvLm

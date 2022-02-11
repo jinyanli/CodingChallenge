@@ -20,20 +20,29 @@ import java.util.stream.Collectors;
 @Service
 public class CodingChallengeService {
 
-    @Autowired
+
     private RestTemplate restTemplate;
 
-    @Autowired
+
     private ObjectMapper mapper;
 
     @Value("${api-base-url}")
     private String theOneApiUrl;
 
-    private UriComponents uri= UriComponentsBuilder.newInstance()
-            .scheme("https").host("the-one-api.dev").path("/v2").path("/book").build();
+    public CodingChallengeService(RestTemplate restTemplate, ObjectMapper mapper, String theOneApiUrl) {
+        this.restTemplate = restTemplate;
+        this.mapper = mapper;
+        this.theOneApiUrl = theOneApiUrl;
+    }
+
+    public CodingChallengeService(RestTemplate restTemplate, ObjectMapper mapper) {
+        this.restTemplate = restTemplate;
+        this.mapper = mapper;
+    }
 
     public List<String> getChapterNamesFromAllOfTheBooks() throws JsonProcessingException {
-        ResponseEntity<String> booksResponse = restTemplate.getForEntity(uri.toUri(), String.class);
+        UriComponents bookUri = UriComponentsBuilder.fromHttpUrl(theOneApiUrl).path("/book").build();
+        ResponseEntity<String> booksResponse = restTemplate.getForEntity(bookUri.toUri(), String.class);
         JsonNode rootNode = mapper.readTree(booksResponse.getBody());
         JsonNode docsNode = rootNode.get("docs");
         List<String> ids = new ArrayList();
