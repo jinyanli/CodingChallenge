@@ -22,6 +22,7 @@ public class CodingChallengeController {
 
     private CodingChallengeService codingChallengeService;
 
+    @Autowired
     public CodingChallengeController(CodingChallengeService codingChallengeService) {
         this.codingChallengeService = codingChallengeService;
     }

@@ -18,6 +18,7 @@ import java.net.URI;
 
 import static org.mockito.ArgumentMatchers.any;
 
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.lenient;
 import static org.mockito.Mockito.when;
 
@@ -53,7 +54,8 @@ class CodingChallengeServiceTest {
         ResponseEntity<String> chapterResponse = new ResponseEntity(jason, HttpStatus.OK);
         lenient().when(restTemplateMock.getForEntity(any(URI.class), any(Class.class))).thenReturn(chapterResponse);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        codingChallengeService = new CodingChallengeService(restTemplateMock, mapper, url);
+        codingChallengeService = new CodingChallengeService(restTemplateMock, mapper);
+        codingChallengeService.setTheOneApiUrl(url);
     }
 
     @Test

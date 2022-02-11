@@ -18,6 +18,7 @@ public class CodingChallengeAPI {
 
     private CodingChallengeService codingChallengeService;
 
+    @Autowired
     public CodingChallengeAPI(CodingChallengeService codingChallengeService) {
         this.codingChallengeService = codingChallengeService;
     }

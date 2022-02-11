@@ -18,6 +18,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+
 public class CodingChallengeService {
 
 
@@ -29,15 +30,13 @@ public class CodingChallengeService {
     @Value("${api-base-url}")
     private String theOneApiUrl;
 
-    public CodingChallengeService(RestTemplate restTemplate, ObjectMapper mapper, String theOneApiUrl) {
-        this.restTemplate = restTemplate;
-        this.mapper = mapper;
-        this.theOneApiUrl = theOneApiUrl;
-    }
-
     public CodingChallengeService(RestTemplate restTemplate, ObjectMapper mapper) {
         this.restTemplate = restTemplate;
         this.mapper = mapper;
+    }
+
+    public void setTheOneApiUrl(String theOneApiUrl) {
+        this.theOneApiUrl = theOneApiUrl;
     }
 
     public List<String> getChapterNamesFromAllOfTheBooks() throws JsonProcessingException {
@@ -82,7 +81,7 @@ public class CodingChallengeService {
     public List<Question> getQuestions() throws JsonProcessingException{
 
         UriComponents quoteUri = UriComponentsBuilder.newInstance().fromHttpUrl(theOneApiUrl).path("/quote").build();
-        ResponseEntity<String> quotesResponse = restTemplate.getForEntity(quoteUri.toUri(), String.class);
+        ResponseEntity<String> quotesResponse = restTemplate.getForEntity(quoteUri.toUri().toString(), String.class);
 
         JsonNode quoteRoot = mapper.readTree(quotesResponse.getBody());
         JsonNode docsNode = quoteRoot.get("docs");
