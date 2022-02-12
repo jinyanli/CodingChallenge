@@ -18,12 +18,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
-
 public class CodingChallengeService {
 
-
     private RestTemplate restTemplate;
-
 
     private ObjectMapper mapper;
 
